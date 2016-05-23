@@ -3390,9 +3390,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn > .btn:hover,
 .input-group-btn > .btn:active {
   z-index: 2;
+
 }
 .nav {
-  margin-bottom: 0;
+  padding-bottom:0px;
+  margin-bottom:0px;
   padding-left: 0;
   list-style: none;
 }
@@ -5482,7 +5484,7 @@ button.close {
 }
 .center-block {
   display: block;
-  margin-left: auto;
+  margin-left: 30%;
   margin-right: auto;
 }
 .pull-right {
@@ -5987,4 +5989,8 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+}
+
+p{
+  font-size: 15px;
 }

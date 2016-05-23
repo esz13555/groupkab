@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>Homepage</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link href="../css/linecons.css" rel="stylesheet" type="text/css">
+<link href="../css/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="../css/responsive.css" rel="stylesheet" type="text/css">
+<link href="../css/animate.css" rel="stylesheet" type="text/css">
+
+<link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
+
+<!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
+
+<script type="text/javascript" src="../js/jquery.1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery-scrolltofixed.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/jquery.isotope.js"></script>
+<script type="text/javascript" src="../js/wow.js"></script>
+<script type="text/javascript" src="../js/classie.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<!--[if lt IE 9]>
+    <script src="../js/respond-1.1.0.min.js"></script>
+    <script src="../js/html5shiv.js"></script>
+    <script src="../js/html5element.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        $('.res-nav_click').click(function(){
+		$('ul.toggle').slideToggle(600)	
+			});	
+			
+	$(document).ready(function() {
+$(window).bind('scroll', function() {
+         if ($(window).scrollTop() > 0) {
+             $('#header_outer').addClass('fixed');
+         }
+         else {
+             $('#header_outer').removeClass('fixed');
+         }
+    });
+	
+	  });
+	  
+
+		    });	
+function resizeText() {
+	var preferredWidth = 767;
+	var displayWidth = window.innerWidth;
+	var percentage = displayWidth / preferredWidth;
+	var fontsizetitle = 25;
+	var newFontSizeTitle = Math.floor(fontsizetitle * percentage);
+	$(".divclass").css("font-size", newFontSizeTitle)
+}
+</script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('#header_outer').scrollToFixed();
+        $('.res-nav_click').click(function(){
+            $('.main-nav').slideToggle();
+            return false    
+            
+        });
+        
+    });
+</script> 
+<script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100
+      }
+    );
+    wow.init();
+    document.getElementById('').onclick = function() {
+      var section = document.createElement('section');
+      section.className = 'wow fadeInDown';
+    section.className = 'wow shake';
+    section.className = 'wow zoomIn';
+    section.className = 'wow lightSpeedIn';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script> 
+<script type="text/javascript">
+  $(window).load(function(){
+    
+    $('a').bind('click',function(event){
+      var $anchor = $(this);
+      
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top - 91
+      }, 1500,'easeInOutExpo');
+      /*
+      if you don't want to use the easing effects:
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top
+      }, 1000);
+      */
+      event.preventDefault();
+    });
+  })
+</script> 
+
+<script language="Javascript">  
+  $(function(){
+    // 以該點為中心顯示地圖
+    var map_div = document.getElementById("map_div");
+    // 取得目前定位點
+    var lat=25.0932124;
+    var lng=121.5232904;
+      var latlng = new google.maps.LatLng(lat,lng); 
+    var gmap = new google.maps.Map(map_div, {
+      zoom:14,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    // 建立地標
+    var marker=new google.maps.Marker({
+      position: latlng,
+      icon:"../img/Oval 1.png",
+      map: gmap,
+      title: "集合地點"
+    }); 
+    // 觸碰地標
+    google.maps.event.addListener(marker, "click", function(event) {
+      var infowindow = new google.maps.InfoWindow({   
+        content: '<div>' + "位置" + "</div>" 
+      }); 
+        infowindow.open(gmap,marker);
+    })
+  });
+</script> 
+<script type="text/javascript">
+
+   
+  jQuery(document).ready(function($){     
+// Portfolio Isotope
+  var container = $('#portfolio-wrap'); 
+  
+
+  container.isotope({
+    animationEngine : 'best-available',
+      animationOptions: {
+        duration: 200,
+        queue: false
+      },
+    layoutMode: 'fitRows'
+  }); 
+
+  $('#filters a').click(function(){
+    $('#filters a').removeClass('active');
+    $(this).addClass('active');
+    var selector = $(this).attr('data-filter');
+      container.isotope({ filter: selector });
+        setProjects();    
+      return false;
+  });
+    
+    
+    function splitColumns() { 
+      var winWidth = $(window).width(), 
+        columnNumb = 1;
+      
+      
+      if (winWidth > 1024) {
+        columnNumb = 4;
+      } else if (winWidth > 900) {
+        columnNumb = 2;
+      } else if (winWidth > 479) {
+        columnNumb = 2;
+      } else if (winWidth < 479) {
+        columnNumb = 1;
+      }
+      
+      return columnNumb;
+    }   
+    
+    function setColumns() { 
+      var winWidth = $(window).width(), 
+        columnNumb = splitColumns(), 
+        postWidth = Math.floor(winWidth / columnNumb);
+      
+      container.find('.portfolio-item').each(function () { 
+        $(this).css( { 
+          width : postWidth + 'px' 
+        });
+      });
+    }   
+    
+    function setProjects() { 
+      setColumns();
+      container.isotope('reLayout');
+    }   
+    
+    container.imagesLoaded(function () { 
+      setColumns();
+    });
+    
+  
+    $(window).bind('resize', function () { 
+      setProjects();      
+    });
+
+});
+$( window ).load(function() {
+  jQuery('#all').click();
+  return false;
+});
+</script>
+
+</head>
+<body>
+
+<!--Header_section-->
+<header id="header_outer">
+  <div class="container">
+    <div class="header_section">
+      <div style="width:150px; height:15px; class="logo"><a href="index.html"><img src ="../img/logob.png" alt=""></a></div>
+      <nav class="nav" id="nav">
+        <ul class="toggle">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於</a></li>
+          <li><a href="joinus.html">加入我們</a></li>
+        </ul>
+        <ul class="">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於</a></li>
+          <li><a href="joinus.html">加入我們</a></li>
+        </ul>
+      </nav>
+      <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> </div>
+  </div>
+</header>
+<!--Header_section--> 
+
+<!--Top_content-->
+
+<section id="top_content" class="top_cont_outer">
+<div class="top_cont_inner">
+      <div class="container">
+      
+      <div class="top_content">
+        <div class="row">
+          <div class="col-lg-5 col-sm-7">
+            <div class="top_left_cont flipInY wow animated">
+              
+              <h2>Welcome to GroupKab</h2>
+              <p> 讓您用捷運的價格享受計程車的便利與舒適 </p>
+              <a href="#service" class="learn_more2">Learn more</a> </div>
+          </div>
+          <div class="col-lg-7 col-sm-5"> </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--Top_content--> 
+
+
+<section id="work_outer"><!--main-section-start-->
+<div class="top_cont_latest">
+  <div class="container">
+
+    <div class="work_section">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 wow fadeInLeft delay-05s">
+          <div class="service-list">
+            <div class="service-list-col2">
+              <p>GroupKab是一個高效率的共乘媒合平台，為您自動且快速媒合共乘夥伴，是經濟節約、便利舒適、安全信賴、節能環保的智慧交通新主張。</p>
+            </div>
+          </div>
+          <div class="service-list">
+        
+            <div class="service-list-col2">
+              <p>GroupKab更是一個友善熱情的社群平台，讓無數每天移動著的人們，在繁忙緊湊的生活步調下，重啟社交互動，增進生活樂趣！</p>
+            </div>
+          </div>
+          <div class="service-list">
+         
+            <div class="service-list-col2">
+              <p>​即刻加入GroupKab，體驗創新進步的時代力量。​</p>
+            </div>
+          </div>
+          
+          <div ><img src ="../img/appstore.png" alt=""> <img src ="../img/googleplay.png" alt=""></div>
+          
+        </div>
+        <figure class="col-lg-6 col-sm-6  text-right wow fadeInUp delay-02s"> </figure>
+
+      </div>
+    </div>
+  </div>
+  <!--<div class="work_pic"><img src="img/dashboard_pic.png" alt=""></div>-->
+  </div>
+</section>
+<!--main-section-end--> 
+<!--Service-->
+<section  id="service">
+  <div class="container">
+    <h2>共乘好處多</h2>
+    <div class="service_area">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon1 delay-03s animated wow  zoomIn"> </div>
+            <h3 class="animated fadeInUp wow">經濟節約</h3>
+            <p class="animated fadeInDown wow">共同分攤出租車資，最低原本車資的25%起算！</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon2 delay-03s animated wow  zoomIn"> </div>
+            <h3 class="animated fadeInUp wow">便利舒適</h3>
+            <p class="animated fadeInDown wow">快速、舒適地抵達目的地，免除轉乘或步行的不便。</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon3 delay-03s animated wow  zoomIn"> </div>
+            <h3 class="animated fadeInUp wow">便利舒適</h3>
+            <p class="animated fadeInDown wow">認證與評價機制確保共乘夥伴素質，提升共乘安全。</p>
+          </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon4 delay-03s animated wow zoomIn"></div>
+            <h3 class="animated fadeInUp wow">節能環保</h3>
+            <p class="animated fadeInDown wow">降低每人出行平均所耗費的能源與交通資源。</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon5 delay-03s animated wow zoomIn"></div>
+            <h3 class="animated fadeInUp wow">節能環保</h3>
+            <p class="animated fadeInDown wow">認識共乘好友，豐富交通體驗，擴大社交圈。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Service-->
+
+<!--new_portfolio--> 
+
+
+
+<!--twitter-feed-end-->
+<footer class="footer_section" id="contact">
+  <div class="container">
+    <section class="main-section contact" id="contact">
+      <div class="contact_section">
+        <h2>Contact Us</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="contact_block">
+              <div class="contact_block_icon rollIn animated wow"><span><i class="fa-home"></i></span></div>
+              <span> 台灣111台北市士林區文林路342號7樓 </span> </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact_block">
+              <div class="contact_block_icon icon2 rollIn animated wow"><span><i class="fa-phone"></i></span></div>
+              <span> 1-800-BOO-YAHH </span> </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact_block">
+              <div class="contact_block_icon icon3 rollIn animated wow"><span><i class="fa-pencil"></i></span></div>
+              <span> <a href="mailto:hello@butterfly.com"> service@groupkab.com</a> </span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 wow fadeInLeft">
+          <div class="contact-info-box address clearfix">
+            <h3>Don’t be shy. Say hello!</h3>
+            <p>我們是新創公司，希望你對新創公司的一切有所了解。 我們保證每個人都在同一條船上，擁有相同的航向與夢想。 期望打造一家立足台灣，但放眼亞洲，改變全球的公司。 期望這段冒險旅程，會帶給每個人豐富的收穫。 我們認為這些創業冒險的過程與經驗，才是這個時代年輕人在未來勇闖天下時，所擁有最珍貴的資產。為了下一個更好的未來！</p>
+            <p>WORK WITH US</p>
+          </div>
+          <ul class="social-link">
+            <li class="twitter animated bounceIn wow delay-02s"><a href="javascript:void(0)"><i class="fa-twitter"></i></a></li>
+            <li class="facebook animated bounceIn wow delay-03s"><a href="javascript:void(0)"><i class="fa-facebook"></i></a></li>
+            <li class="gplus animated bounceIn wow delay-05s"><a href="javascript:void(0)"><i class="fa-google-plus"></i></a></li>
+           
+          </ul>
+        </div>
+        <div class="col-lg-6 wow fadeInUp delay-06s">
+         <div data-role="page" id="mappage">
+          <div data-role="content">
+            <div style="margin: 0 auto;
+  width: 280px;
+  height: 440px;
+  border: 5px solid #FFF;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px #666;" id="map_div"></div>
+       </div>
+</div>
+
+      </div>
+    </section>
+  </div>
+  <div class="container">
+    <div class="footer_bottom"> <span>Copyright © 2016 | by GroupKab </span> </div>
+    <!-- 
+        All links in the footer should remain intact. 
+        Licenseing information is available at: http://bootstraptaste.com/license/
+        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Butterfly
+    -->
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -126,7 +126,7 @@ p{
 
 #header_outer{
 	background:#ffffff;
-	padding:30px 0px;
+	padding:10px 0px  0px 0px;
 	}
 
 .header_section{
@@ -200,7 +200,8 @@ p{
 	}
 	
 .top_cont_inner{
-	background:url(../img/1461302288.png) center center fixed no-repeat ;
+	background:url(../img/DSC_0003.jpg) no-repeat  bottom;
+	width: 100%;
 	}
 	
 .top_content{
@@ -302,20 +303,44 @@ a.learn_more2:hover{
     padding-right: 15px;
 	}
 	
-.service_icon{
-	border:2px solid #f56eab;
+.service_icon1{
+	background: url(../img/logo-1.jpg) no-repeat ;
+ 	border-radius:50%;
+	width:90px;
+	height:90px;
+	margin:0px auto 25px;
+
+	}
+	
+.service_icon2{
+	background: url(../img/logo-2.jpg) no-repeat  bottom;
 	border-radius:50%;
 	width:90px;
 	height:90px;
 	margin:0px auto 25px;
 	}
 	
-.service_icon.icon2{
-	border:2px solid #7cc576;
+.service_icon3{
+	background: url(../img/logo-3.jpg) no-repeat  bottom;
+	border-radius:50%;
+	width:90px;
+	height:90px;
+	margin:0px auto 25px;
+	}
+.service_icon4{
+	background: url(../img/logo-4.jpg) no-repeat  bottom;
+	border-radius:50%;
+	width:90px;
+	height:90px;
+	margin:0px auto 25px;
 	}
 	
-.service_icon.icon3{
-	border:2px solid #49b5e7;
+.service_icon5{
+	background: url(../img/logo-5.jpg) no-repeat  bottom;
+	border-radius:50%;
+	width:90px;
+	height:90px;
+	margin:0px auto 25px;
 	}
 	
 .service_icon span {
@@ -369,7 +394,7 @@ a.learn_more2:hover{
 	
 	
 .top_cont_latest{
-	background:url(../img/dashboard_pic.png) no-repeat right bottom;
+	background:url(../img/5.png) no-repeat right bottom;
 }
 	
 .work_pic{

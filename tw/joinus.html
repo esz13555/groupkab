@@ -1,0 +1,543 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>Homepage</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link href="../css/linecons.css" rel="stylesheet" type="text/css">
+<link href="../css/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="../css/responsive.css" rel="stylesheet" type="text/css">
+<link href="../css/animate.css" rel="stylesheet" type="text/css">
+
+<link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
+
+<!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
+
+<script type="text/javascript" src="../js/jquery.1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery-scrolltofixed.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/jquery.isotope.js"></script>
+<script type="text/javascript" src="../js/wow.js"></script>
+<script type="text/javascript" src="../js/classie.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<!--[if lt IE 9]>
+    <script src="../js/respond-1.1.0.min.js"></script>
+    <script src="../js/html5shiv.js"></script>
+    <script src="../js/html5element.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        $('.res-nav_click').click(function(){
+		$('ul.toggle').slideToggle(600)	
+			});	
+			
+	$(document).ready(function() {
+$(window).bind('scroll', function() {
+         if ($(window).scrollTop() > 0) {
+             $('#header_outer').addClass('fixed');
+         }
+         else {
+             $('#header_outer').removeClass('fixed');
+         }
+    });
+	
+	  });
+	  
+
+		    });	
+function resizeText() {
+	var preferredWidth = 767;
+	var displayWidth = window.innerWidth;
+	var percentage = displayWidth / preferredWidth;
+	var fontsizetitle = 25;
+	var newFontSizeTitle = Math.floor(fontsizetitle * percentage);
+	$(".divclass").css("font-size", newFontSizeTitle)
+}
+</script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('#header_outer').scrollToFixed();
+        $('.res-nav_click').click(function(){
+            $('.main-nav').slideToggle();
+            return false    
+            
+        });
+        
+    });
+</script> 
+<script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100
+      }
+    );
+    wow.init();
+    document.getElementById('').onclick = function() {
+      var section = document.createElement('section');
+      section.className = 'wow fadeInDown';
+    section.className = 'wow shake';
+    section.className = 'wow zoomIn';
+    section.className = 'wow lightSpeedIn';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script> 
+<script type="text/javascript">
+  $(window).load(function(){
+    
+    $('a').bind('click',function(event){
+      var $anchor = $(this);
+      
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top - 91
+      }, 1500,'easeInOutExpo');
+      /*
+      if you don't want to use the easing effects:
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top
+      }, 1000);
+      */
+      event.preventDefault();
+    });
+  })
+</script> 
+
+<!--<script type="text/javascript">
+
+$(window).load(function(){
+  
+  
+  var $container = $('.portfolioContainer'),
+      $body = $('body'),
+      colW = 350,
+      columns = null;
+
+  
+  $container.isotope({
+    // disable window resizing
+    resizable: true,
+    masonry: {
+      columnWidth: colW
+    }
+  });
+  
+  $(window).smartresize(function(){
+    // check if columns has changed
+    var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
+    if ( currentColumns !== columns ) {
+      // set new column count
+      columns = currentColumns;
+      // apply width to container manually, then trigger relayout
+      $container.width( columns * colW )
+        .isotope('reLayout');
+    }
+    
+  }).smartresize(); // trigger resize to set container width
+  $('.portfolioFilter a').click(function(){
+        $('.portfolioFilter .current').removeClass('current');
+        $(this).addClass('current');
+ 
+        var selector = $(this).attr('data-filter');
+        $container.isotope({
+      
+            filter: selector,
+         });
+         return false;
+    });
+  
+});
+
+</script>
+
+
+--> 
+
+<script type="text/javascript">
+
+   
+  jQuery(document).ready(function($){     
+// Portfolio Isotope
+  var container = $('#portfolio-wrap'); 
+  
+
+  container.isotope({
+    animationEngine : 'best-available',
+      animationOptions: {
+        duration: 200,
+        queue: false
+      },
+    layoutMode: 'fitRows'
+  }); 
+
+  $('#filters a').click(function(){
+    $('#filters a').removeClass('active');
+    $(this).addClass('active');
+    var selector = $(this).attr('data-filter');
+      container.isotope({ filter: selector });
+        setProjects();    
+      return false;
+  });
+    
+    
+    function splitColumns() { 
+      var winWidth = $(window).width(), 
+        columnNumb = 1;
+      
+      
+      if (winWidth > 1024) {
+        columnNumb = 4;
+      } else if (winWidth > 900) {
+        columnNumb = 2;
+      } else if (winWidth > 479) {
+        columnNumb = 2;
+      } else if (winWidth < 479) {
+        columnNumb = 1;
+      }
+      
+      return columnNumb;
+    }   
+    
+    function setColumns() { 
+      var winWidth = $(window).width(), 
+        columnNumb = splitColumns(), 
+        postWidth = Math.floor(winWidth / columnNumb);
+      
+      container.find('.portfolio-item').each(function () { 
+        $(this).css( { 
+          width : postWidth + 'px' 
+        });
+      });
+    }   
+    
+    function setProjects() { 
+      setColumns();
+      container.isotope('reLayout');
+    }   
+    
+    container.imagesLoaded(function () { 
+      setColumns();
+    });
+    
+  
+    $(window).bind('resize', function () { 
+      setProjects();      
+    });
+
+});
+$( window ).load(function() {
+  jQuery('#all').click();
+  return false;
+});
+</script>
+<script language="Javascript">  
+  $(function(){
+    // 以該點為中心顯示地圖
+    var map_div = document.getElementById("map_div");
+    // 取得目前定位點
+    var lat=25.0932124;
+    var lng=121.5232904;
+      var latlng = new google.maps.LatLng(lat,lng); 
+    var gmap = new google.maps.Map(map_div, {
+      zoom:14,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    // 建立地標
+    var marker=new google.maps.Marker({
+      position: latlng,
+      icon:"../img/Oval 1.png",
+      map: gmap,
+      title: "集合地點"
+    }); 
+    // 觸碰地標
+    google.maps.event.addListener(marker, "click", function(event) {
+      var infowindow = new google.maps.InfoWindow({   
+        content: '<div>' + "位置" + "</div>" 
+      }); 
+        infowindow.open(gmap,marker);
+    })
+  });
+</script> 
+</head>
+<body>
+
+<!--Header_section-->
+<header id="header_outer">
+  <div class="container">
+    <div class="header_section">
+      <div style="width:150px; height:15px; class="logo"><a href="index.html"><img src ="../img/logob.png" alt=""></a></div>
+      <nav class="nav" id="nav">
+        <ul class="toggle">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於</a></li>
+          <li><a href="joinus.html">加入我們</a></li>
+        </ul>
+        <ul class="">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於</a></li>
+          <li><a href="joinus.html">加入我們</a></li>
+        </ul>
+      </nav>
+      <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> </div>
+  </div>
+</header>
+<!--Header_section--> 
+
+<!--Top_content-->
+
+<section class="twitter-feed"><!--twitter-feed-->
+  <div class="container  animated fadeInDown delay-07s wow">
+    <div class="twitter_bird"><span></span></div>
+    <p style="font-size:190%;"> 一起冒險，是時候加入我們！</p>
+    </div>
+</section>
+
+<div class="center-block">
+<div class="row">
+      <div class="col-sm-6">
+      
+      
+      
+        
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">演算法</a></li>
+            <li><a href="#tab2" data-toggle="tab">後端伺服器</a></li>
+            <li><a href="#tab3" data-toggle="tab">Android 應用</a></li>
+            <li><a href="#tab4" data-toggle="tab">iOS 應用</a></li>
+            <li><a href="#tab5" data-toggle="tab">UI/UX</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <br><br>
+              <h4>Algorithm Engineering</h4>
+              <br>
+              <h4>描述  <small>喜歡用硬底子程式碼實現社會現象</small></h4>
+              <div id="list-tab-in">
+                <li>在既有的Android APP上面，能夠維護，修改Bug，階段開發新功能</li>
+              </div>
+              <br>
+              <h4>使用語言  <small>至少熟悉一項</small></h4>
+              <div id="list-tab-in">
+                <li>Java</li>
+                <li>或其他開發平台語言，但能夠兼容與熟悉既有的APP</li>
+              </div>
+              <br>
+              <h4>背景需求</h4>
+              <div id="list-tab-in">
+                <li>不限科系與背景，負責APP應用端的維護與開發</li>
+                <li>熟悉整個Andriod的開發工具/環境/流程/邏輯</li>
+                <li>有任何自學或練習的作品為佳</li>
+                <li>不限定是否有Android上架經驗</li>
+              </div>
+              <br>
+              <h4>資歷需求</h4>
+              <div id="list-tab-in">
+                <li>入門等級（大學/研究所剛畢業，或一到兩年經驗）</li>
+                  <li>初階等級（至少自學玩過Android開發約兩年以上）</li>
+              </div>
+            </div><!-- end tab-pane -->
+
+            <div class="tab-pane" id="tab2">
+            <br><br>
+              <h4>Back-End Web/Server Engineering</h4>
+              <br>
+              <h4>描述</h4>
+              <div id="list-tab-in">
+                <li>在既有的後端主機上，能夠維護與改善現有功能</li>
+                <li>能夠搭配手機App而開發後端新功能</li>
+                <li>能夠操作/開發/管理資料庫</li>
+                <li>熟悉網路系統，有興趣開發流量負載平衡，或分散式運算</li>
+                <li>有興趣且願意研究/分析/實測 multi-threading/multi-tasking與網路分散式運算
+                在不同使用者規模的效能評估與開發</li>
+              </div>
+              <br>
+              <h4>使用語言  <small>至少熟悉一項</small></h4>
+              <div id="list-tab-in">
+                <li>Java</li>
+                <li>C#/.NET</li>
+                <li>C/C++</li>
+                <li>或自認最熟悉的任何語言，且應試者運用的效率能夠大過上述三項</li>
+              </div>
+              <br>
+              <h4>背景需求</h4>
+              <div id="list-tab-in">
+                <li>偏好資訊相關科系，但不強制。如果有多年自學者且能夠符合職位內容皆歡迎</li>
+                <li>能夠開發後台管理者頁面為佳</li>
+              </div>
+              <br>
+              <h4>資歷需求</h4>
+              <div id="list-tab-in">
+                <li>入門等級（大學/研究所剛畢業，或一到兩年經驗）</li>
+                <li>初階等級（至少自學玩過後端系統兩年以上）</li>
+              </div>
+            </div><!-- end tab-pane -->
+            
+            <div class="tab-pane" id="tab3">
+            <br><br>
+              <h4>Android Application Engineering</h4>
+              <br>
+              <h4>描述</h4>
+              <div id="list-tab-in">
+                <li>在既有的Android APP上面，能夠維護，修改Bug，階段開發新功能</li>
+              </div>
+              <br>
+              <h4>使用語言 <small>至少熟悉一項</small></h4>
+              <div id="list-tab-in">
+                <li>Java</li>
+                <li>或其他開發平台語言，但能夠兼容與熟悉既有的APP</li>
+              </div>
+              <br>
+              <h4>背景需求</h4>
+              <div id="list-tab-in">
+                <li>不限科系與背景，負責APP應用端的維護與開發</li>
+                <li>熟悉整個Andriod的開發工具/環境/流程/邏輯</li>
+                <li>有任何自學或練習的作品為佳</li>
+                <li>不限定是否有Android上架經驗</li>
+              </div>
+              <br>
+              <h4>資歷需求</h4>
+              <div id="list-tab-in">
+                <li>入門等級（大學/研究所剛畢業，或一到兩年經驗）</li>
+                <li>初階等級（至少自學玩過Android開發約兩年以上）</li>
+              </div>
+            </div><!-- end tab-pane -->
+            
+            <div class="tab-pane" id="tab4">
+            <br><br>
+              <h4>iOS Application Engineering</h4>
+              <br>
+              <h4>描述</h4>
+              <div id="list-tab-in">
+                <li>在既有的後端主機與資料庫系統下，開發使用者端的iOS應用程式</li>
+              </div>
+              <br>
+              <h4>使用語言 <small>至少熟悉一項</small></h4>
+              <div id="list-tab-in">
+                <li>Objective-C in XCode （強烈建議）</li>
+                <li>其他開發工具與語言（此項的應試者，至少要在該工具平台使用與開發兩年以上） </li>
+              </div>
+              <br>
+              <h4>背景需求</h4>
+              <div id="list-tab-in">
+                <li>不限科系與背景，負責APP應用端的維護與開發</li>
+                <li>熟悉整個iOS的開發工具/環境/流程/邏輯</li>
+                <li>有任何自學或練習的作品為佳</li>
+                <li>不限定是否有iOS上架經驗</li>
+              </div>
+              <br>
+              <h4>資歷需求</h4>
+              <div id="list-tab-in">
+                <li>入門等級（大學/研究所剛畢業，或一到兩年經驗）</li>
+                <li>初階等級（至少自學玩過iOS開發約兩年以上）</li>
+              </div>
+            </div><!-- end tab-pane -->
+            
+            <div class="tab-pane" id="tab5">
+            <br><br>
+              <h4>UI/UX Design​ </h4>
+              <br>
+              <h4>描述</h4>
+              <div id="list-tab-in">
+                <li>研究並測試使用者經驗，設計與調整APP的UX/UI</li>
+                <li>負責各項行銷助成物、廣宣物、網站素材的視覺設計</li>
+              </div>
+              <br>
+              <h4>背景需求</h4>
+              <div id="list-tab-in">
+                <li>設計相關科系畢業，有相關設計工作經驗者為佳</li>
+              </div>
+              <br>
+              <h4>資歷需求</h4>
+              <div id="list-tab-in">
+                <li>入門等級（剛畢業，或一到兩年經驗）</li>
+                <li>請提供作品集線上觀看</li>
+              </div>
+            </div><!-- end tab-pabe -->
+            
+            
+
+          </div><!-- end tab-content -->
+        </div><!-- end tabbable -->
+        
+        <hr>
+        
+      </div><!-- end col-sm-6 -->
+      </div>
+</div>
+
+
+
+<!--twitter-feed-end-->
+<footer class="footer_section" id="contact">
+  <div class="container">
+    <section class="main-section contact" id="contact">
+      <div class="contact_section">
+        <h2>Contact Us</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="contact_block">
+              <div class="contact_block_icon rollIn animated wow"><span><i class="fa-home"></i></span></div>
+              <span> 台灣111台北市士林區文林路342號7樓 </span> </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact_block">
+              <div class="contact_block_icon icon2 rollIn animated wow"><span><i class="fa-phone"></i></span></div>
+              <span> 1-800-BOO-YAHH </span> </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact_block">
+              <div class="contact_block_icon icon3 rollIn animated wow"><span><i class="fa-pencil"></i></span></div>
+              <span> <a href="mailto:hello@butterfly.com"> service@groupkab.com</a> </span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 wow fadeInLeft">
+          <div class="contact-info-box address clearfix">
+            <h3>Don’t be shy. Say hello!</h3>
+            <p>我們是新創公司，希望你對新創公司的一切有所了解。 我們保證每個人都在同一條船上，擁有相同的航向與夢想。 期望打造一家立足台灣，但放眼亞洲，改變全球的公司。 期望這段冒險旅程，會帶給每個人豐富的收穫。 我們認為這些創業冒險的過程與經驗，才是這個時代年輕人在未來勇闖天下時，所擁有最珍貴的資產。為了下一個更好的未來！</p>
+            <p>WORK WITH US</p>
+          </div>
+          <ul class="social-link">
+            <li class="twitter animated bounceIn wow delay-02s"><a href="javascript:void(0)"><i class="fa-twitter"></i></a></li>
+            <li class="facebook animated bounceIn wow delay-03s"><a href="javascript:void(0)"><i class="fa-facebook"></i></a></li>
+            <li class="gplus animated bounceIn wow delay-05s"><a href="javascript:void(0)"><i class="fa-google-plus"></i></a></li>
+           
+          </ul>
+        </div>
+        <div class="col-lg-6 wow fadeInUp delay-06s">
+    <div data-role="page" id="mappage">
+          <div data-role="content">
+            <div style="margin: 0 auto;
+  width: 280px;
+  height: 440px;
+  border: 5px solid #FFF;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px #666;" id="map_div"></div>
+       </div>
+</div>
+  </div>
+      </div>
+    </section>
+  </div>
+  <div class="container">
+    <div class="footer_bottom"> <span>Copyright © 2016 | by GroupKab </span> </div>
+    <!-- 
+        All links in the footer should remain intact. 
+        Licenseing information is available at: http://bootstraptaste.com/license/
+        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Butterfly
+    -->
+  </div>
+</footer>
+
+
+</body>
+</html>
